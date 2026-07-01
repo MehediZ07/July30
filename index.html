@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>৩৬ দিন — 36 Days: The July Uprising, Bangladesh 2024</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;600;700&display=swap');
+
+:root{
+  --ink:#0e1210;
+  --ink-2:#171c19;
+  --wall:#ece6d8;
+  --wall-2:#ddd4bf;
+  --blood:#c81d25;
+  --blood-dark:#8f1319;
+  --moss:#1f6e4a;
+  --monsoon:#5b6d74;
+  --gold:#d8a13a;
+  --paper:#f6f2e8;
+  display-face:'Anton', sans-serif;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);
+  color:var(--wall);
+  font-family:'Newsreader', serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
+
+.bn{font-family:'Noto Sans Bengali', sans-serif;}
+.display{font-family:'Anton', sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+
+a{color:inherit;}
+
+::selection{background:var(--blood); color:var(--wall);}
+
+/* ---------- Texture layers ---------- */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:200; opacity:0.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wall-texture{
+  background-color:var(--ink);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 42px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 84px);
+}
+
+/* ---------- Progress thread ---------- */
+#thread{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--blood), var(--gold));
+  z-index:300; transition:width 0.05s linear;
+}
+
+/* ---------- Nav dot ---------- */
+.daycount{
+  position:fixed; bottom:18px; right:18px; z-index:250;
+  font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--wall-2); background:rgba(14,18,16,0.75); border:1px solid rgba(236,230,216,0.15);
+  padding:8px 12px; border-radius:2px; backdrop-filter:blur(4px);
+}
+.daycount b{color:var(--blood); font-family:'IBM Plex Mono', monospace;}
+@media (max-width:640px){ .daycount{display:none;} }
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100svh; position:relative; display:flex; flex-direction:column; justify-content:flex-end;
+  padding:8vw 6vw 6vw;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(200,29,37,0.16), transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(31,110,74,0.12), transparent 50%),
+    var(--ink);
+  overflow:hidden;
+  border-bottom:1px solid rgba(236,230,216,0.1);
+}
+.hero-rain{position:absolute; inset:0; z-index:1; opacity:0.5; pointer-events:none;}
+.hero-eyebrow{
+  font-size:clamp(13px,1.6vw,16px); letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.2rem; position:relative; z-index:2;
+}
+.hero-title{
+  font-family:'Anton', sans-serif;
+  font-size:clamp(2.6rem, 12vw, 9.5rem);
+  line-height:0.9;
+  color:var(--wall);
+  text-transform:uppercase;
+  position:relative; z-index:2;
+  letter-spacing:-0.01em;
+  max-width:100%;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  hyphens:auto;
+}
+.hero-title .red{color:var(--blood);}
+.hero-bn{
+  font-family:'Noto Sans Bengali', sans-serif; font-weight:700;
+  font-size:clamp(1.1rem, 3.2vw, 2.4rem); color:var(--wall-2); margin-top:0.6rem; position:relative; z-index:2;
+  overflow-wrap:break-word; word-break:break-word; max-width:100%;
+}
+.hero-sub{
+  max-width:640px; margin-top:2rem; font-size:clamp(1rem,1.6vw,1.2rem); line-height:1.6; color:var(--wall-2);
+  font-weight:400; position:relative; z-index:2; max-width:min(640px, 100%);
+}
+.hero-meta{
+  margin-top:2.5rem; display:flex; gap:2.5rem; row-gap:1.4rem; flex-wrap:wrap; position:relative; z-index:2;
+  max-width:100%;
+}
+.hero-meta div{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--wall-2);}
+.hero-meta b{display:block; font-family:'Anton', sans-serif; font-size:clamp(1.15rem,4vw,1.6rem); color:var(--wall); letter-spacing:0; text-transform:none; margin-top:2px;}
+.scroll-cue{
+  position:absolute; bottom:2rem; right:6vw; z-index:2; font-family:'IBM Plex Mono',monospace;
+  font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--wall-2);
+  writing-mode:vertical-rl; display:flex; align-items:center; gap:10px;
+}
+.scroll-cue .line{width:1px; height:50px; background:var(--wall-2); animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.25;} 50%{opacity:0.9;}}
+@media (max-width:520px){
+  .scroll-cue{display:none;}
+}
+
+/* ================= SECTION SCAFFOLD ================= */
+section{position:relative; max-width:100%; overflow-x:hidden;}
+.pad{padding:7rem 6vw;}
+@media (max-width:640px){ .pad{padding:4.5rem 6vw;} }
+
+.dark{background:var(--ink); color:var(--wall);}
+.paper{background:var(--paper); color:var(--ink-2);}
+.blood-bg{background:linear-gradient(160deg, var(--blood-dark), var(--blood) 70%); color:var(--paper);}
+
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1rem; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.paper .eyebrow{color:var(--blood-dark);}
+.eyebrow::before{content:''; width:22px; height:1px; background:currentColor; flex-shrink:0;}
+
+h2.section-title{
+  font-family:'Anton', sans-serif; text-transform:uppercase; font-size:clamp(2rem,5vw,4rem); line-height:1; max-width:14ch;
+  overflow-wrap:break-word; word-break:break-word;
+}
+
+.lede{font-size:clamp(1.05rem,1.6vw,1.3rem); line-height:1.65; max-width:62ch; margin-top:1.6rem; color:var(--wall-2); font-weight:400;}
+.paper .lede{color:#3a3630;}
+
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;}
+@media (max-width:800px){ .two-col{grid-template-columns:1fr; gap:2.5rem;} }
+
+.body-text{font-size:1.05rem; line-height:1.75; color:var(--wall-2); max-width:100%; overflow-wrap:break-word;}
+.paper .body-text{color:#3a3630;}
+.body-text p + p{margin-top:1.1rem;}
+.body-text strong{color:var(--wall); font-weight:600;}
+.paper .body-text strong{color:var(--ink);}
+
+/* ================= ORIGINS icons row ================= */
+.quota-bar{
+  display:flex; flex-wrap:wrap; width:100%; border-radius:3px; overflow:hidden; margin:2.2rem 0 0.8rem;
+  border:1px solid rgba(236,230,216,0.15);
+}
+.quota-seg{
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(9px,1.6vw,12px); line-height:1.3;
+  color:var(--ink); font-weight:600; padding:10px 6px; min-height:44px;
+}
+.q1{background:var(--gold); width:56%;}
+.q2{background:var(--moss); width:30%; color:var(--paper);}
+.q3{background:var(--monsoon); width:10%; color:var(--paper);}
+.q4{background:var(--wall-2); width:4%;}
+@media (max-width:640px){
+  .quota-bar{flex-direction:column;}
+  .quota-seg{width:100% !important; justify-content:flex-start; text-align:left; font-size:12px; padding:10px 14px;}
+}
+.quota-legend{display:flex; gap:1.6rem; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--wall-2); margin-top:0.6rem;}
+.quota-legend span{display:inline-flex; align-items:center; gap:6px;}
+.quota-legend i{width:9px; height:9px; display:inline-block; border-radius:1px; flex-shrink:0;}
+
+/* ================= TIMELINE ================= */
+.timeline-wrap{
+  position:relative;
+  padding:6rem 6vw 8rem 6vw;
+  overflow:hidden;
+}
+.timeline-head{max-width:700px; margin-bottom:4rem; padding-left:56px;}
+.spine{
+  position:absolute;
+  left:calc(6vw + 20px);
+  top:0; bottom:0;
+  width:2px;
+  background:linear-gradient(180deg, transparent 0%, var(--blood) 8%, var(--gold) 45%, var(--monsoon) 75%, var(--wall-2) 92%, transparent 100%);
+}
+
+.day{
+  position:relative;
+  padding-left:56px;
+  margin-bottom:3.4rem;
+  max-width:760px;
+}
+.day::before{
+  content:'';
+  position:absolute;
+  left:9px;
+  top:6px;
+  width:22px; height:22px;
+  border-radius:50%;
+  background:var(--ink);
+  border:2px solid var(--blood);
+  z-index:2;
+}
+@media (max-width:480px){
+  .timeline-head{padding-left:40px;}
+  .day{padding-left:40px;}
+  .day::before{left:2px; width:18px; height:18px;}
+  .spine{left:calc(6vw + 11px);}
+}
+.day.peak::before{background:var(--blood); box-shadow:0 0 0 5px rgba(200,29,37,0.18);}
+.day-date{
+  font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:0.4rem;
+}
+.day-title{font-family:'Anton', sans-serif; text-transform:uppercase; font-size:clamp(1.2rem,2.4vw,1.9rem); color:var(--wall); line-height:1.1; margin-bottom:0.6rem; overflow-wrap:break-word; word-break:break-word;}
+.day-title .bn{display:block; font-family:'Noto Sans Bengali',sans-serif; font-weight:600; font-size:0.62em; color:var(--wall-2); text-transform:none; margin-top:2px;}
+.day-body{font-size:0.98rem; line-height:1.65; color:var(--wall-2); max-width:58ch; overflow-wrap:break-word;}
+.day-tag{
+  display:inline-block; margin-top:0.7rem; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.1em;
+  text-transform:uppercase; padding:3px 8px; border:1px solid rgba(200,29,37,0.5); color:var(--blood); border-radius:2px;
+}
+
+/* ================= BLACKOUT ================= */
+.blackout{
+  background:#050605; padding:8rem 6vw; position:relative; overflow:hidden;
+  border-top:1px solid rgba(236,230,216,0.08); border-bottom:1px solid rgba(236,230,216,0.08);
+}
+@media (max-width:640px){ .blackout{padding:5rem 6vw;} }
+.blackout::before{
+  content:''; position:absolute; inset:0;
+  background:repeating-linear-gradient(45deg, rgba(200,29,37,0.03) 0 2px, transparent 2px 40px);
+}
+.blackout-grid{display:grid; grid-template-columns:1fr 1fr; gap:4rem; position:relative; z-index:2; align-items:center;}
+@media (max-width:850px){ .blackout-grid{grid-template-columns:1fr; gap:2.5rem;} }
+.blackout .section-title{color:var(--wall);}
+.static-box{
+  aspect-ratio:4/3; border:1px solid rgba(236,230,216,0.15); border-radius:4px; position:relative; overflow:hidden;
+  background:#0a0a0a; max-width:100%; width:100%; margin:0;
+}
+.static-box canvas{width:100%; height:100%; display:block;}
+.static-caption{
+  position:absolute; bottom:0; left:0; right:0; padding:14px 16px; background:linear-gradient(0deg, rgba(0,0,0,0.85), transparent);
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; color:var(--wall-2);
+}
+
+/* ================= NUMBERS ================= */
+.numbers-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(58,54,48,0.15); margin-top:3rem; border:1px solid rgba(58,54,48,0.15);}
+@media (max-width:720px){ .numbers-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:420px){ .numbers-grid{grid-template-columns:1fr;} }
+.num-cell{background:var(--paper); padding:2.4rem 1.6rem;}
+.num-value{font-family:'Anton', sans-serif; font-size:clamp(2.2rem,4.4vw,3.4rem); color:var(--blood); line-height:1;}
+.num-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#6b655b; margin-top:0.6rem; line-height:1.5;}
+
+.bars{margin-top:3.5rem;}
+.bar-row{display:grid; grid-template-columns:110px 1fr 60px; align-items:center; gap:14px; margin-bottom:10px;}
+.bar-row .lbl{font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b655b; text-align:right;}
+.bar-track{height:20px; background:rgba(58,54,48,0.08); border-radius:2px; overflow:hidden;}
+.bar-fill{height:100%; background:linear-gradient(90deg, var(--blood-dark), var(--blood)); width:0%; transition:width 1.2s cubic-bezier(.2,.8,.2,1);}
+.bar-row .val{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-2); font-weight:600; text-align:right;}
+@media (max-width:480px){
+  .bar-row{grid-template-columns:64px 1fr 46px; gap:8px;}
+  .bar-row .lbl{font-size:9.5px;}
+  .bar-row .val{font-size:10.5px;}
+}
+
+/* ================= RED NOT BLACK signature ================= */
+.mourning{
+  background:var(--ink); padding:8rem 6vw; text-align:center; position:relative;
+}
+@media (max-width:640px){ .mourning{padding:5rem 6vw;} }
+.mourning .eyebrow{justify-content:center;}
+.mourning .eyebrow::before{display:none;}
+.mourning-grid{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:3.5rem 0;}
+.avatar{
+  width:64px; height:64px; border-radius:50%; position:relative; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+@media (max-width:480px){
+  .avatar{width:44px; height:44px;}
+}
+.avatar svg{width:100%; height:100%;}
+.mourning-note{max-width:620px; margin:0 auto; font-size:1.05rem; line-height:1.7; color:var(--wall-2);}
+
+/* ================= VOICES / NAMES ================= */
+.names-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:3.5rem; border-top:1px solid rgba(236,230,216,0.12);}
+@media (max-width:760px){
+  .names-grid{grid-template-columns:1fr;}
+  .names-grid .name-card{border-right:none;}
+}
+.name-card{padding:2.4rem 1.8rem; border-bottom:1px solid rgba(236,230,216,0.12); border-right:1px solid rgba(236,230,216,0.12);}
+.names-grid .name-card:nth-child(3n){border-right:none;}
+.name-flame{width:26px; height:34px; margin-bottom:1.2rem;}
+.name-title{font-family:'Anton',sans-serif; text-transform:uppercase; font-size:1.3rem; color:var(--wall);}
+.name-bn{font-family:'Noto Sans Bengali',sans-serif; color:var(--wall-2); font-size:0.95rem; margin-top:2px;}
+.name-desc{margin-top:0.8rem; font-size:0.92rem; line-height:1.6; color:var(--wall-2); overflow-wrap:break-word;}
+.name-date{margin-top:0.9rem; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold);}
+
+/* ================= AFTERMATH ================= */
+.aftermath{background:var(--moss); color:var(--paper); padding:8rem 6vw;}
+@media (max-width:640px){ .aftermath{padding:5rem 6vw;} }
+.aftermath .eyebrow{color:rgba(246,242,232,0.75);}
+.aftermath .section-title{color:var(--paper);}
+.aftermath .lede{color:rgba(246,242,232,0.88);}
+.aftermath .body-text{color:rgba(246,242,232,0.82);}
+.aftermath .body-text strong{color:#fff;}
+
+/* ================= QUOTE BLOCK ================= */
+.quote-block{
+  max-width:800px; margin:3rem 0; padding:2rem 0 2rem 2rem; border-left:3px solid var(--gold);
+}
+.quote-block p{font-family:'Newsreader',serif; font-style:italic; font-size:1.3rem; line-height:1.5; color:var(--wall); overflow-wrap:break-word;}
+.paper .quote-block p{color:var(--ink);}
+.quote-block cite{display:block; margin-top:0.8rem; font-family:'IBM Plex Mono',monospace; font-style:normal; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold);}
+.paper .quote-block cite{color:var(--blood-dark);}
+@media (max-width:480px){
+  .quote-block{padding:1.4rem 0 1.4rem 1.2rem;}
+  .quote-block p{font-size:1.1rem;}
+}
+
+/* ================= FOOTER ================= */
+footer{background:#050605; padding:5rem 6vw 3rem; color:var(--wall-2);}
+@media (max-width:640px){ footer{padding:3.5rem 6vw 2.5rem;} }
+.footer-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; border-bottom:1px solid rgba(236,230,216,0.1); padding-bottom:3rem;}
+@media (max-width:720px){ .footer-grid{grid-template-columns:1fr; gap:2rem;} }
+footer h4{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--wall); margin-bottom:1rem;}
+footer p, footer li{font-size:0.88rem; line-height:1.7; overflow-wrap:break-word;}
+footer ul{list-style:none;}
+footer a{text-decoration:underline; text-decoration-color:rgba(236,230,216,0.3); text-underline-offset:3px; word-break:break-word;}
+.foot-bottom{padding-top:1.8rem; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.04em; color:#655f57; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+/* reveal on scroll */
+.reveal{opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease;}
+.reveal.show{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div id="thread"></div>
+<div class="daycount mono">DAY <b id="dayNow">01</b> / 36</div>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <svg class="hero-rain" id="rainSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="hero-eyebrow mono">DHAKA · 1 JULY — 5 AUGUST 2024</div>
+  <h1 class="hero-title">36 Days<br>That <span class="red">Broke</span><br>the Silence</h1>
+  <div class="hero-bn bn">৩৬ দিনের জুলাই অভ্যুত্থান</div>
+  <p class="hero-sub">A chronicle of the July Uprising — how a court ruling on civil‑service hiring quotas grew, over five weeks of protest, crackdown and blackout, into the mass movement that ended a fifteen‑year government.</p>
+  <div class="hero-meta">
+    <div>Movement began<b>1 Jul 2024</b></div>
+    <div>Government fell<b>5 Aug 2024</b></div>
+    <div>UN‑documented deaths<b>400+</b></div>
+    <div>Internet blackout<b>~10 days</b></div>
+  </div>
+  <div class="scroll-cue">SCROLL — কোটা না মেধা</div>
+</div>
+
+<!-- ============ ORIGINS ============ -->
+<section class="paper pad">
+  <div class="two-col reveal">
+    <div>
+      <div class="eyebrow">Before July · কোটা প্রথা</div>
+      <h2 class="section-title">A hiring quota, revived by a court</h2>
+      <p class="lede">The spark was procedural. The fire was decades in the making.</p>
+    </div>
+    <div class="body-text">
+      <p>Since 1972, Bangladesh had reserved a large share of civil‑service jobs for specific groups, most notably a 30% quota for children and grandchildren of veterans of the 1971 Liberation War. In a country with chronic graduate unemployment, students had challenged the system before — in 2013 and again in 2018, when mass protests pushed the government to scrap it almost entirely.</p>
+      <p>On <strong>5 June 2024</strong>, the High Court reinstated the 2018 quota system, ruling the government's cancellation of it invalid. To students who had spent years preparing for a shrinking pool of merit‑based posts, it read as the reversal of a hard‑won reform — and reopened a grievance that had never really closed.</p>
+      <div class="quota-bar">
+        <div class="quota-seg q1">56% MERIT</div>
+        <div class="quota-seg q2">30% WAR VETERANS' DESCENDANTS</div>
+        <div class="quota-seg q3">10% DISTRICT</div>
+        <div class="quota-seg q4"></div>
+      </div>
+      <div class="quota-legend mono">
+        <span><i style="background:var(--gold)"></i>Merit</span>
+        <span><i style="background:var(--moss)"></i>Freedom fighters' descendants</span>
+        <span><i style="background:var(--monsoon)"></i>District quota</span>
+        <span><i style="background:var(--wall-2)"></i>Women / minorities / disabled</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="dark wall-texture">
+  <div class="timeline-wrap">
+    <div class="timeline-head reveal">
+      <div class="eyebrow">The 36 days · জুলাই অভ্যুত্থানের সময়রেখা</div>
+      <h2 class="section-title">From blockade to uprising</h2>
+      <p class="lede">A movement that began with sit‑ins on university lawns and ended with a prime minister's helicopter leaving the capital.</p>
+    </div>
+
+    <div class="spine"></div>
+
+    <div class="day reveal">
+      <div class="day-date">1–8 JULY</div>
+      <div class="day-title">Bangla Blockade<span class="bn">বাংলা ব্লকেড</span></div>
+      <div class="day-body">Students under the new banner <strong>Students Against Discrimination</strong> block major roads, rail lines and highways nationwide. The protest is peaceful, campus‑based, and framed narrowly around quota reform: "Quota na medha, medha medha" — quota or merit, merit, merit.</div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-date">10–14 JULY</div>
+      <div class="day-title">A pause, a reprieve, a provocation</div>
+      <div class="day-body">The Appellate Division suspends the quota reinstatement for four weeks, easing tension briefly. Then, at a press conference on 14 July, Sheikh Hasina responds to a question about the quota with a remark widely heard as comparing protesters to "Razakars" — wartime collaborators, one of the gravest insults in Bangladeshi political language. Campuses erupt within hours.</div>
+      <div class="day-tag">Turning point</div>
+    </div>
+
+    <div class="day peak reveal">
+      <div class="day-date">15–16 JULY</div>
+      <div class="day-title">The first blood<span class="bn">প্রথম রক্ত</span></div>
+      <div class="day-body">On 15 July, activists of the ruling party's student wing, Bangladesh Chhatra League, attack protesters at Dhaka University. The next day, <strong>Abu Sayed</strong>, a student in Rangpur, is shot dead by police as he stands with arms spread, unarmed, in front of advancing officers — captured on video that spreads nationwide within hours. Five more protesters are killed the same day. The government shuts all schools and universities indefinitely.</div>
+      <div class="day-tag">Abu Sayed killed</div>
+    </div>
+
+    <div class="day peak reveal">
+      <div class="day-date">18–19 JULY</div>
+      <div class="day-title">Curfew, army, blackout</div>
+      <div class="day-body"><strong>Mugdho</strong>, a young volunteer distributing water and biscuits to protesters, is shot dead in Dhaka on 18 July — his death, like Abu Sayed's, becomes a symbol of the movement. That evening the government cuts mobile internet nationwide; broadband follows within a day. A nationwide curfew is declared and the army is deployed. 19 July becomes the single deadliest day of the month, with dozens of reported deaths as security forces and ruling‑party activists confront protesters in multiple cities.</div>
+      <div class="day-tag">Total blackout begins</div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-date">21 JULY</div>
+      <div class="day-title">The court finally rules</div>
+      <div class="day-body">With the country under curfew, the Appellate Division overhauls the quota system: 93% of civil‑service posts by merit, 5% for freedom fighters' descendants, the remainder split among ethnic minorities, third‑gender and disabled applicants. The original demand is essentially met — but by now the movement is no longer about quotas.</div>
+    </div>
+
+    <div class="day reveal">
+      <div class="day-date">30 JULY</div>
+      <div class="day-title">Red, not black<span class="bn">কালো নয়, লাল</span></div>
+      <div class="day-body">The government declares a national day of mourning for those killed. Ruling‑party supporters change their social media profile pictures to black. Across the country, students and ordinary citizens instead turn theirs red — a deliberate, leaderless rejection of official grief, and a demand for accountability rather than ceremony.</div>
+    </div>
+
+    <div class="day peak reveal">
+      <div class="day-date">3–4 AUGUST</div>
+      <div class="day-title">One demand: resignation</div>
+      <div class="day-body">At Shaheed Minar on 3 August, coordinator Nahid Islam announces the movement's single remaining demand — the resignation of Sheikh Hasina and her cabinet — and calls for a nationwide non‑cooperation movement from 4 August. That day brings some of the worst violence of the uprising, with well over a hundred deaths reported across the country as clashes spread beyond the capital.</div>
+      <div class="day-tag">One‑point demand</div>
+    </div>
+
+    <div class="day peak reveal">
+      <div class="day-date">5 AUGUST</div>
+      <div class="day-title">The Long March to Dhaka<span class="bn">ঢাকা অভিমুখে লংমার্চ</span></div>
+      <div class="day-body">Defying a nationwide curfew, hundreds of thousands converge on the capital. By early afternoon, Sheikh Hasina resigns and leaves the country by military helicopter with her sister, ending fifteen years in power. Crowds enter the prime minister's official residence, Ganabhaban, within hours. An interim government forms days later under Nobel laureate <strong>Muhammad Yunus</strong>.</div>
+      <div class="day-tag">Government falls</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLACKOUT FEATURE ============ -->
+<section class="blackout">
+  <div class="blackout-grid">
+    <div class="reveal">
+      <div class="eyebrow">The blackout · ব্ল্যাকআউট</div>
+      <h2 class="section-title">A country switched off</h2>
+      <p class="lede">For nearly ten days, Bangladesh's 170 million people were cut off from the open internet — and from each other.</p>
+      <div class="body-text" style="margin-top:1.6rem;">
+        <p>Mobile data went first, on the evening of 18 July. Broadband followed. Facebook, WhatsApp and other platforms stayed restricted even after connections partially returned, reopening fully only in early August. Hospitals were reportedly barred from disclosing casualty figures; foreign journalists struggled to verify events on the ground.</p>
+        <p>The UN human rights office later noted that the blackout itself made an accurate death toll impossible to establish — the documented figures below are described by investigators as <strong>likely undercounts</strong>.</p>
+      </div>
+    </div>
+    <div class="static-box reveal">
+      <canvas id="staticCanvas"></canvas>
+      <div class="static-caption mono">NO SIGNAL · 18 JUL – 28 JUL 2024 · MOBILE + BROADBAND RESTRICTED</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="paper pad">
+  <div class="reveal">
+    <div class="eyebrow">By the numbers · পরিসংখ্যান</div>
+    <h2 class="section-title">What the count can tell us</h2>
+    <p class="lede">Every figure below is contested to some degree — a direct consequence of the blackout and curfew. They are presented with their sources, not as a final tally.</p>
+  </div>
+
+  <div class="numbers-grid reveal">
+    <div class="num-cell">
+      <div class="num-value">400+</div>
+      <div class="num-label">Deaths documented by the UN Human Rights Office, 16 Jul – 4 Aug 2024</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-value">600+</div>
+      <div class="num-label">Deaths reported in media &amp; movement tallies, 16 Jul – 11 Aug, per the same UN analysis</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-value">1,000+</div>
+      <div class="num-label">Total killed since July, per Bangladesh's health ministry, late August 2024</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-value">6,700+</div>
+      <div class="num-label">Reported injured over the course of the movement</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-value">32+</div>
+      <div class="num-label">Children among the dead, per UNICEF's concern statement</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-value">~10</div>
+      <div class="num-label">Days of near‑total internet blackout nationwide</div>
+    </div>
+  </div>
+
+  <div class="bars reveal">
+    <div class="eyebrow" style="margin-top:3rem;">Reported deaths by date — selected days</div>
+    <div class="bar-row"><div class="lbl">16 Jul</div><div class="bar-track"><div class="bar-fill" data-w="8"></div></div><div class="val">6</div></div>
+    <div class="bar-row"><div class="lbl">18 Jul</div><div class="bar-track"><div class="bar-fill" data-w="43"></div></div><div class="val">32</div></div>
+    <div class="bar-row"><div class="lbl">19 Jul</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="val">75</div></div>
+    <div class="bar-row"><div class="lbl">4 Aug</div><div class="bar-track"><div class="bar-fill" data-w="95"></div></div><div class="val">~100+</div></div>
+    <div class="bar-row"><div class="lbl">5 Aug</div><div class="bar-track"><div class="bar-fill" data-w="60"></div></div><div class="val">~40+</div></div>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#8a8378; margin-top:1rem;">Figures compiled from contemporaneous reporting (Prothom Alo, The Daily Star, Reuters) and the UN OHCHR preliminary analysis. Undercounting is likely for every date shown.</p>
+  </div>
+</section>
+
+<!-- ============ RED NOT BLACK signature moment ============ -->
+<section class="mourning">
+  <div class="eyebrow reveal">The signature gesture</div>
+  <h2 class="section-title reveal" style="margin:0 auto; text-align:center;">A red square,<br>instead of black</h2>
+  <div class="mourning-grid reveal" id="avatarGrid"></div>
+  <p class="mourning-note reveal">When the state called for mourning, ordinary Bangladeshis improvised their own symbol — no leader announced it, no organisation coordinated it. It simply spread, account by account, until red became the color of the uprising.</p>
+</section>
+
+<!-- ============ NAMES ============ -->
+<section class="dark wall-texture pad">
+  <div class="reveal">
+    <div class="eyebrow">The names that moved a nation · শহীদদের স্মরণে</div>
+    <h2 class="section-title">Not statistics</h2>
+    <p class="lede">Two deaths, more than any single ruling or speech, are widely credited with turning a campus protest into a national uprising.</p>
+  </div>
+  <div class="names-grid reveal">
+    <div class="name-card">
+      <svg class="name-flame" viewBox="0 0 24 34" fill="none"><path d="M12 2C12 2 6 10 6 18C6 24 9 28 12 28C15 28 18 24 18 18C18 10 12 2 12 2Z" fill="#d8a13a" opacity="0.9"/><path d="M12 12C12 12 9 17 9 21C9 24 10.5 26 12 26C13.5 26 15 24 15 21C15 17 12 12 12 12Z" fill="#c81d25"/></svg>
+      <div class="name-title">Abu Sayed</div>
+      <div class="name-bn bn">আবু সাঈদ</div>
+      <div class="name-desc">A student of English at Begum Rokeya University, Rangpur. Killed by police gunfire on 16 July while standing his ground, unarmed, in front of the line — a moment captured on video and shared nationwide within hours.</div>
+      <div class="name-date">16 July 2024</div>
+    </div>
+    <div class="name-card">
+      <svg class="name-flame" viewBox="0 0 24 34" fill="none"><path d="M12 2C12 2 6 10 6 18C6 24 9 28 12 28C15 28 18 24 18 18C18 10 12 2 12 2Z" fill="#d8a13a" opacity="0.9"/><path d="M12 12C12 12 9 17 9 21C9 24 10.5 26 12 26C13.5 26 15 24 15 21C15 17 12 12 12 12Z" fill="#c81d25"/></svg>
+      <div class="name-title">Mugdho</div>
+      <div class="name-bn bn">মীর মাহফুজুর রহমান মুগ্ধ</div>
+      <div class="name-desc">A freelancer and volunteer known for photographs of him handing out water and biscuits to protesters and police alike. Shot dead in Dhaka while doing exactly that.</div>
+      <div class="name-date">18 July 2024</div>
+    </div>
+    <div class="name-card">
+      <svg class="name-flame" viewBox="0 0 24 34" fill="none"><path d="M12 2C12 2 6 10 6 18C6 24 9 28 12 28C15 28 18 24 18 18C18 10 12 2 12 2Z" fill="#d8a13a" opacity="0.9"/><path d="M12 12C12 12 9 17 9 21C9 24 10.5 26 12 26C13.5 26 15 24 15 21C15 17 12 12 12 12Z" fill="#c81d25"/></svg>
+      <div class="name-title">Golam Nafiz</div>
+      <div class="name-bn bn">গোলাম নাফিজ</div>
+      <div class="name-desc">A teenage student activist killed on 4 August during the non‑cooperation movement, in the final and deadliest phase before Sheikh Hasina's resignation.</div>
+      <div class="name-date">4 August 2024</div>
+    </div>
+  </div>
+
+  <div class="quote-block reveal">
+    <p>"Why did they shoot my son? He wasn't attacking anyone. Is it a crime to seek a job?"</p>
+    <cite>Monowara Begum, mother of Abu Sayed</cite>
+  </div>
+</section>
+
+<!-- ============ AFTERMATH ============ -->
+<section class="aftermath">
+  <div class="two-col reveal">
+    <div>
+      <div class="eyebrow">Afterward · পরবর্তী</div>
+      <h2 class="section-title">A government falls, a country rebuilds</h2>
+    </div>
+    <div class="body-text">
+      <p>Sheikh Hasina's Awami League had governed Bangladesh for fifteen consecutive years. On 5 August 2024, she resigned and flew to India, where she has remained since; her whereabouts and political future are still disputed inside Bangladesh.</p>
+      <p>An interim government led by economist and Nobel Peace laureate <strong>Muhammad Yunus</strong> took office days later, tasked with stabilising the country and preparing for fresh elections. The organisers of the protest movement, largely unknown outside student politics before June 2024, became central figures in the country's transitional politics.</p>
+      <p>Every year on 16 July — the date Abu Sayed was killed — Bangladesh now observes <strong>July Martyrs' Day</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>About this piece</h4>
+      <p>Built as an independent, non‑partisan chronicle of the July Uprising, drawing on Wikipedia's timeline articles, contemporaneous reporting from The Daily Star and Prothom Alo, and the UN Human Rights Office's preliminary analysis of the protests. Casualty figures vary by source and date of reporting; ranges are shown deliberately rather than a single number.</p>
+    </div>
+    <div>
+      <h4>Read further</h4>
+      <ul>
+        <li><a href="https://en.wikipedia.org/wiki/July_Revolution_(Bangladesh)" target="_blank" rel="noopener">July Revolution — Wikipedia</a></li>
+        <li><a href="https://www.ohchr.org" target="_blank" rel="noopener">OHCHR preliminary report</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/Category:2024_Bangladesh_quota_reform_movement" target="_blank" rel="noopener">Photos on Wikimedia Commons</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Note on images</h4>
+      <p>This page uses original illustration and typography rather than sourced press photographs, to keep it fully rights‑clean as a standalone file. Freely licensed photojournalism from the uprising is available via the Wikimedia Commons link above.</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>জুলাই অভ্যুত্থান, ২০২৪ — Built for remembrance, not for any political side.</span>
+    <span>Sources compiled July 2026</span>
+  </div>
+</footer>
+
+<script>
+// scroll progress
+const thread = document.getElementById('thread');
+const dayNow = document.getElementById('dayNow');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  thread.style.width = pct + '%';
+  const day = Math.min(36, Math.max(1, Math.round(pct/100*36)));
+  dayNow.textContent = String(day).padStart(2,'0');
+}, {passive:true});
+
+// reveal on scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// bar fill animation
+const barIo = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.bar-fill').forEach(b=>{ b.style.width = b.dataset.w + '%'; });
+      barIo.unobserve(e.target);
+    }
+  });
+}, {threshold:0.3});
+document.querySelectorAll('.bars').forEach(el=>barIo.observe(el));
+
+// hero rain (subtle svg lines)
+(function(){
+  const svg = document.getElementById('rainSvg');
+  const ns = 'http://www.w3.org/2000/svg';
+  svg.setAttribute('viewBox','0 0 1000 600');
+  svg.setAttribute('preserveAspectRatio','none');
+  for(let i=0;i<70;i++){
+    const x = Math.random()*1000;
+    const len = 20 + Math.random()*40;
+    const line = document.createElementNS(ns,'line');
+    line.setAttribute('x1',x); line.setAttribute('y1',-20);
+    line.setAttribute('x2',x-8); line.setAttribute('y2',len-20);
+    line.setAttribute('stroke','rgba(236,230,216,0.35)');
+    line.setAttribute('stroke-width','1');
+    const dur = (1+Math.random()*1.4).toFixed(2)+'s';
+    const delay = (Math.random()*3).toFixed(2)+'s';
+    line.style.animation = `fall ${dur} linear infinite`;
+    line.style.animationDelay = delay;
+    svg.appendChild(line);
+  }
+  const style = document.createElement('style');
+  style.textContent = `@keyframes fall{ from{ transform:translateY(-20px);} to{ transform:translateY(640px);} }`;
+  document.head.appendChild(style);
+})();
+
+// static/noise canvas for blackout box
+(function(){
+  const canvas = document.getElementById('staticCanvas');
+  const ctx = canvas.getContext('2d');
+  function resize(){ canvas.width = canvas.clientWidth; canvas.height = canvas.clientHeight; }
+  resize(); window.addEventListener('resize', resize);
+  let visible = false;
+  new IntersectionObserver(e=>{ visible = e[0].isIntersecting; }, {threshold:0.1}).observe(canvas);
+  function draw(){
+    if(visible){
+      const w = canvas.width, h = canvas.height;
+      const imgData = ctx.createImageData(w,h);
+      for(let i=0;i<imgData.data.length;i+=4){
+        const v = Math.random()*60;
+        imgData.data[i]=v; imgData.data[i+1]=v; imgData.data[i+2]=v; imgData.data[i+3]=255;
+      }
+      ctx.putImageData(imgData,0,0);
+      ctx.fillStyle='rgba(200,29,37,0.03)';
+      ctx.fillRect(0,0,w,h);
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// red avatar grid
+(function(){
+  const grid = document.getElementById('avatarGrid');
+  const ns = 'http://www.w3.org/2000/svg';
+  for(let i=0;i<24;i++){
+    const wrap = document.createElement('div');
+    wrap.className='avatar';
+    const svg = document.createElementNS(ns,'svg');
+    svg.setAttribute('viewBox','0 0 64 64');
+    const isRed = Math.random() > 0.22;
+    const circle = document.createElementNS(ns,'circle');
+    circle.setAttribute('cx','32'); circle.setAttribute('cy','32'); circle.setAttribute('r','32');
+    circle.setAttribute('fill', isRed ? '#c81d25' : '#151815');
+    svg.appendChild(circle);
+    if(!isRed){
+      const c2 = document.createElementNS(ns,'circle');
+      c2.setAttribute('cx','32'); c2.setAttribute('cy','32'); c2.setAttribute('r','30');
+      c2.setAttribute('fill','none'); c2.setAttribute('stroke','#2a2e2a'); c2.setAttribute('stroke-width','2');
+      svg.appendChild(c2);
+    }
+    wrap.appendChild(svg);
+    grid.appendChild(wrap);
+  }
+})();
+</script>
+
+</body>
+</html>
