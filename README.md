@@ -1,3 +1,33 @@
 # July36
 
-A static tribute page for the July Uprising in Bangladesh.
+A modern tribute page built with Next.js App Router to document the July Uprising in Bangladesh.
+
+## Overview
+
+This project includes a responsive, glassmorphism-style landing page with:
+- fixed anchor navigation
+- mobile-friendly menu and layout
+- animated hero section and data visualizations
+- Bengali and English typography
+- static assets served from `public/`
+
+## Local development
+
+To run the project locally:
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the app in your browser at:
+
+```text
+http://localhost:3000
+```
+
+## Notes
+
+- `index.html` is ignored in Git and not part of the deployed Next.js app.
+- The main application entry is `app/page.js` and global styling is in `app/globals.css`.
+- Icons are provided by `react-icons`, and fonts are loaded via Google Fonts.
