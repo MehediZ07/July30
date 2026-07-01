@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;600;700&display=swap');
+
 :root {
   color-scheme: dark;
   --ink: #0e1210;
@@ -17,10 +19,11 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--ink);
   color: var(--wall);
-  font-family: var(--font-newsreader), 'Noto Serif', Georgia, serif;
+  font-family: 'Newsreader', serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  padding-top: 72px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -31,6 +34,88 @@ body {
 .bn { font-family: var(--font-noto-sans-bengali), sans-serif; }
 .display { font-family: var(--font-anton), sans-serif; text-transform: uppercase; letter-spacing: 0.01em; }
 .mono { font-family: var(--font-ibm-plex-mono), monospace; }
+
+.glass-nav {
+  position: fixed;
+  inset: 12px auto auto 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  z-index: 310;
+  padding: 0.1rem 1.5rem;
+  width: min(92vw, 1120px);
+  max-width: 1120px;
+  background: rgba(14, 18, 16, 0.14);
+  border: none;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.14);
+}
+
+.glass-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.glass-nav-logo img {
+  height: 4rem;
+  margin-top: .35rem;
+  width: auto;
+  display: block;
+  border-radius: 0;
+  border: none;
+}
+
+.glass-nav a {
+  color: var(--wall);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.glass-nav a:hover,
+.glass-nav a:focus {
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 940px) {
+  .glass-nav {
+    width: calc(100% - 2rem);
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .glass-nav-logo {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding-top: 86px;
+  }
+  .glass-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+  }
+  .glass-nav a {
+    font-size: 0.65rem;
+  }
+}
 a { color: inherit; }
 ::selection { background: var(--blood); color: var(--wall); }
 
@@ -84,9 +169,14 @@ a { color: inherit; }
 @keyframes pulse { 0%,100% { opacity: 0.25; } 50% { opacity: 0.9; } }
 @media (max-width: 520px) { .scroll-cue { display: none; } }
 
-section { position: relative; max-width: 100%; overflow-x: hidden; }
+section, .hero {
+  position: relative;
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-margin-top: 90px;
+}
 .pad { padding: 7rem 6vw; }
-@media (max-width: 640px) { .pad { padding: 4.5rem 6vw; } }
+@media (max-width: 640px) { .pad { padding: 4.5rem 6vw; } .hero { scroll-margin-top: 110px; } }
 
 .dark { background: var(--ink); color: var(--wall); }
 .paper { background: var(--paper); color: var(--ink-2); }
@@ -206,3 +296,8 @@ footer a { text-decoration: underline; text-decoration-color: rgba(236,230,216,0
 
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.show { opacity: 1; transform: translateY(0); }
+
+/* Ensure content is visible if JS animation doesn’t fire */
+@supports (scroll-behavior: smooth) {
+  .reveal { opacity: 1; transform: translateY(0); }
+}

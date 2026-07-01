@@ -149,9 +149,24 @@ export default function TributePage() {
     <>
       <div className="grain" />
       <div id="thread" />
+      <div className="glass-nav">
+        <div className="glass-nav-logo">
+          <img src="/logo.png" alt="July36 logo" />
+        </div>
+        <div className="glass-nav-links">
+          <a href="#home">Home</a>
+          <a href="#origins">Origins</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#blackout">Blackout</a>
+          <a href="#numbers">Numbers</a>
+          <a href="#signature">Signature</a>
+          <a href="#names">Names</a>
+          <a href="#aftermath">Aftermath</a>
+        </div>
+      </div>
       <div className="daycount mono">DAY <b id="dayNow">01</b> / 36</div>
 
-      <div className="hero">
+      <div className="hero" id="home">
         <svg className="hero-rain" id="rainSvg" xmlns="http://www.w3.org/2000/svg" />
         <div className="hero-eyebrow mono">DHAKA · 1 JULY — 5 AUGUST 2024</div>
         <h1 className="hero-title">36 Days<br />That <span className="red">Broke</span><br />the Silence</h1>
@@ -166,7 +181,7 @@ export default function TributePage() {
         <div className="scroll-cue">SCROLL — কোটা না মেধা</div>
       </div>
 
-      <section className="paper pad">
+      <section className="paper pad" id="origins">
         <div className="two-col reveal">
           <div>
             <div className="eyebrow">Before July · কোটা প্রথা</div>
@@ -192,7 +207,7 @@ export default function TributePage() {
         </div>
       </section>
 
-      <section className="dark wall-texture">
+      <section className="dark wall-texture" id="timeline">
         <div className="timeline-wrap">
           <div className="timeline-head reveal">
             <div className="eyebrow">The 36 days · জুলাই অভ্যুত্থানের সময়রেখা</div>
@@ -257,7 +272,7 @@ export default function TributePage() {
         </div>
       </section>
 
-      <section className="blackout">
+      <section className="blackout" id="blackout">
         <div className="blackout-grid">
           <div className="reveal">
             <div className="eyebrow">The blackout · ব্ল্যাকআউট</div>
@@ -275,7 +290,7 @@ export default function TributePage() {
         </div>
       </section>
 
-      <section className="paper pad">
+      <section className="paper pad" id="numbers">
         <div className="reveal">
           <div className="eyebrow">By the numbers · পরিসংখ্যান</div>
           <h2 className="section-title">What the count can tell us</h2>
@@ -320,14 +335,14 @@ export default function TributePage() {
         </div>
       </section>
 
-      <section className="mourning">
+      <section className="mourning" id="signature">
         <div className="eyebrow reveal">The signature gesture</div>
         <h2 className="section-title reveal" style={{ margin: '0 auto', textAlign: 'center' }}>A red square,<br />instead of black</h2>
         <div className="mourning-grid reveal" id="avatarGrid" />
         <p className="mourning-note reveal">When the state called for mourning, ordinary Bangladeshis improvised their own symbol — no leader announced it, no organisation coordinated it. It simply spread, account by account, until red became the color of the uprising.</p>
       </section>
 
-      <section className="dark wall-texture pad">
+      <section className="dark wall-texture pad" id="names">
         <div className="reveal">
           <div className="eyebrow">The names that moved a nation · শহীদদের স্মরণে</div>
           <h2 className="section-title">Not statistics</h2>
@@ -363,7 +378,7 @@ export default function TributePage() {
         </div>
       </section>
 
-      <section className="aftermath">
+      <section className="aftermath" id="aftermath">
         <div className="two-col reveal">
           <div>
             <div className="eyebrow">Afterward · পরবর্তী</div>
