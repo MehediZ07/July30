@@ -42,7 +42,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1.5rem;
   z-index: 310;
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -60,7 +60,7 @@ body {
 .glass-nav-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
